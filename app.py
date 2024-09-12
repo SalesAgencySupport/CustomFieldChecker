@@ -13,8 +13,11 @@ def webhook():
     data = request.json
     if data.get('meta', {}).get('action') == 'added' and data.get('meta', {}).get('object') == 'organization':
         print("Went into meta???")
+        print("DATA: ", data)
         new_org = data.get('current', {})
         new_nip = new_org.get('NIP')
+        print("new_org: ", new_org)
+        print("new_nip: ", new_nip)
         if new_nip:
             print("Went into new_nip")
             duplicate_org = search_organization_by_nip(new_nip)
