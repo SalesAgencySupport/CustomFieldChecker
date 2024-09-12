@@ -12,15 +12,18 @@ def webhook():
     print("Went into webhook")
     data = request.json
     if data.get('meta', {}).get('action') == 'added' and data.get('meta', {}).get('object') == 'organization':
+        print("Went into meta???")
         new_org = data.get('current', {})
         new_nip = new_org.get('NIP')
         if new_nip:
+            print("Went into new_nip")
             duplicate_org = search_organization_by_nip(new_nip)
             if duplicate_org:
+                print("Went into duplicate_org")
                 # Duplicate found, delete the newly created organization
                 delete_status = delete_organization(new_org.get('id'))
                 if delete_status:
-                    print("deleted org")
+                    print("Went into delete_status")
                     return jsonify({
                         'status': 'duplicate_found',
                         'message': f"Duplicate organization found with NIP: {new_nip}. Deleted the newly created organization.",
