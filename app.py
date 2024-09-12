@@ -5,7 +5,6 @@ import os
 app = Flask(__name__)
 
 API_TOKEN = os.getenv('PIPEDRIVE_API_TOKEN')
-print(API_TOKEN)
 
 @app.route('/webhook', methods=['POST'])
 def webhook():
@@ -52,7 +51,7 @@ def search_organization_by_nip(nip):
     url = f'https://api.pipedrive.com/v1/organizations/search'
     params = {
         'term': nip,
-        'fields': 'eee088234e85a23e5fed084c858151291f1626a9',
+        'custom_fields': 'eee088234e85a23e5fed084c858151291f1626a9',
         'api_token': API_TOKEN
     }
     response = requests.get(url, params=params)
