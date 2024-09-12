@@ -5,6 +5,7 @@ import os
 app = Flask(__name__)
 
 API_TOKEN = os.getenv('PIPEDRIVE_API_TOKEN')
+print(API_TOKEN)
 
 @app.route('/webhook', methods=['POST'])
 def webhook():
