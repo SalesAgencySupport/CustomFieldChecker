@@ -9,6 +9,7 @@ print(API_TOKEN)
 
 @app.route('/webhook', methods=['POST'])
 def webhook():
+    print("Went into webhook")
     data = request.json
     if data.get('meta', {}).get('action') == 'added' and data.get('meta', {}).get('object') == 'organization':
         new_org = data.get('current', {})
