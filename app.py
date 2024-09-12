@@ -21,6 +21,7 @@ def webhook():
         if new_nip:
             print("Went into new_nip")
             duplicate_org = search_organization_by_nip(new_nip)
+            print("duplicate org", duplicate_org)
             if duplicate_org:
                 print("Went into duplicate_org")
                 # Duplicate found, delete the newly created organization
