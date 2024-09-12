@@ -56,6 +56,7 @@ def search_organization_by_nip(nip):
         'api_token': API_TOKEN
     }
     response = requests.get(url, params=params)
+    print("response", response)
     if response.status_code == 200:
         search_results = response.json().get('data', {}).get('items', [])
         if search_results:
