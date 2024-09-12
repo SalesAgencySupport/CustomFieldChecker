@@ -15,7 +15,7 @@ def webhook():
         print("Went into meta???")
         print("DATA: ", data)
         new_org = data.get('current', {})
-        new_nip = new_org.get('NIP')
+        new_nip = new_org.get('eee088234e85a23e5fed084c858151291f1626a9')
         print("new_org: ", new_org)
         print("new_nip: ", new_nip)
         if new_nip:
