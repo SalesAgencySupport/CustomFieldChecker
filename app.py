@@ -19,18 +19,21 @@ def webhook():
                 # Duplicate found, delete the newly created organization
                 delete_status = delete_organization(new_org.get('id'))
                 if delete_status:
+                    print("deleted org")
                     return jsonify({
                         'status': 'duplicate_found',
                         'message': f"Duplicate organization found with NIP: {new_nip}. Deleted the newly created organization.",
                         'duplicate_org': duplicate_org
                     }), 200
                 else:
+                    print("org not deleted")
                     return jsonify({
                         'status': 'duplicate_found',
                         'message': f"Duplicate organization found with NIP: {new_nip}. Failed to delete the newly created organization.",
                         'duplicate_org': duplicate_org
                     }), 500
             else:
+                print("no duplicate found")
                 return jsonify({
                     'status': 'no_duplicate',
                     'message': 'No duplicate organization found.'
