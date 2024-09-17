@@ -52,7 +52,10 @@ def delete_organization(org_id):
     return response.status_code == 200
 
 def notify_alert_server(message):
+    print("notify_alert_server start")
     socketio.emit('send_alert', message, namespace='/')
+    print("notify_alert_server end")
+
 
 if __name__ == '__main__':
     socketio.run(app, host='0.0.0.0', port=int(os.environ.get('PORT', 5000)))
