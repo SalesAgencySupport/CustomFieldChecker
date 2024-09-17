@@ -52,9 +52,9 @@ def delete_organization(org_id):
     return response.status_code == 200
 
 def notify_alert_server(message):
-    print("notify_alert_server start")
-    socketio.emit('send_alert', message, namespace='/')
-    print("notify_alert_server end")
+    url = f'{ALERT_SERVER_URL}/notify'
+    response = requests.post(url, json=message)
+    print(f"Sent notification to alert server: {response.status_code}, message: {message}")
 
 
 if __name__ == '__main__':
